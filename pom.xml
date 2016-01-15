@@ -13,7 +13,7 @@
     <artifactId>javax-inject-gwt</artifactId>
     <version>0.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
-    <name>Remark</name>
+    <name>javax-inject-gwt</name>
     <description>javax.inject to support Dagger + GWT</description>
     <url>http://www.clickhandler.io</url>
     <organization>
