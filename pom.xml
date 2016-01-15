@@ -21,176 +21,48 @@
         <url>http://www.clickhandler.io</url>
     </organization>
     <licenses>
-      <license>
-        <name>MIT License</name>
-        <url>http://www.opensource.org/licenses/mit-license.php</url>
-      </license>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
     </licenses>
     <developers>
         <developer>
-          <name>Chris Jones</name>
-          <organization>ClickHandlerIO</organization>
-          <organizationUrl>http://www.clickhandler.io</organizationUrl>
+            <name>Chris Jones</name>
+            <organization>ClickHandlerIO</organization>
+            <organizationUrl>http://www.clickhandler.io</organizationUrl>
         </developer>
-	<developer>
-          <name>Bo Molocznik</name>
-          <organization>ClickHandlerIO</organization>
-          <organizationUrl>http://www.clickhandler.io</organizationUrl>
+        <developer>
+            <name>Bo Molocznik</name>
+            <organization>ClickHandlerIO</organization>
+            <organizationUrl>http://www.clickhandler.io</organizationUrl>
         </developer>
-	<developer>
-          <name>Clay Molocznik</name>
-          <organization>ClickHandlerIO</organization>
-          <organizationUrl>http://www.clickhandler.io</organizationUrl>
+        <developer>
+            <name>Clay Molocznik</name>
+            <organization>ClickHandlerIO</organization>
+            <organizationUrl>http://www.clickhandler.io</organizationUrl>
         </developer>
-    </developers>    
+    </developers>
     <scm>
-      <connection>scm:git:git@github.com:ClickHandlerIO/javax-inject-gwt.git</connection>
-      <developerConnection>scm:git:git@github.com:ClickHandlerIO/javax-inject-gwt.git</developerConnection>
-      <url>git@github.com:ClickHandlerIO/javax-inject-gwt.git</url>
+        <connection>scm:git:git@github.com:ClickHandlerIO/javax-inject-gwt.git</connection>
+        <developerConnection>scm:git:git@github.com:ClickHandlerIO/javax-inject-gwt.git</developerConnection>
+        <url>git@github.com:ClickHandlerIO/javax-inject-gwt.git</url>
     </scm>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <gpg.executable>gpg2</gpg.executable>
-        <gpg.passphrase>the_pass_phrase</gpg.passphrase>
-        <gwt.version>2.8.0-beta1</gwt.version>
-        <guava.version>19.0</guava.version>
-        <dagger.version>2.0.2</dagger.version>
-        <junit.version>4.11</junit.version>
-        <selenium.version>2.49.0</selenium.version>
-        <test-ng.version>6.1.1</test-ng.version>
-        <xml-apis.version>1.4.01</xml-apis.version>
-        <gwt-maven-plugin.version>2.8.0-SNAPSHOT</gwt-maven-plugin.version>
+        <java.version>1.8</java.version>
         <maven-compiler-plugin.version>3.3</maven-compiler-plugin.version>
-        <maven-resources-plugin.version>2.3</maven-resources-plugin.version>
-        <build-helper-maven-plugin.version>1.10</build-helper-maven-plugin.version>
-        <maven-surefire-plugin.version>2.19.1</maven-surefire-plugin.version>
-        <excluded-tests>**/move/selenium/**</excluded-tests>
+        <maven-gpg-plugin.version>1.6</maven-gpg-plugin.version>
+        <nexus-staging-maven-plugin.version>1.6.3</nexus-staging-maven-plugin.version>
     </properties>
 
-
-    <!-- ====================================================================== -->
-    <!-- R E P O S I T O R I E S                                                -->
-    <!-- ====================================================================== -->
-
-    <repositories>
-        <repository>
-            <id>central</id>
-            <url>https://repo1.maven.org/maven2</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </repository>
-
-        <repository>
-            <id>snapshots-repo</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots/url</url>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
-
-    <pluginRepositories>
-        <pluginRepository>
-            <id>central</id>
-            <url>https://repo1.maven.org/maven2</url>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-        </pluginRepository>
-
-        <pluginRepository>
-            <id>plugin-snapshots-repo</id>
-            <url>https://oss.sonatype.org/content/repositories/public/</url>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-        </pluginRepository>
-    </pluginRepositories>
-
-
-    <!-- ====================================================================== -->
-    <!-- D E P E N D E N C I E S                                                -->
-    <!-- ====================================================================== -->
-
-    <dependencies>
-
-        <!-- External Dependencies -->
-
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-user</artifactId>
-            <version>${gwt.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-dev</artifactId>
-            <version>${gwt.version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>com.google.gwt</groupId>
-            <artifactId>gwt-elemental</artifactId>
-            <version>${gwt.version}</version>
-        </dependency>
-
-	<!-- TODO add dagger-gwt and javax-inject-gwt dependencies -->
-
-        <dependency>
-            <groupId>com.google.dagger</groupId>
-            <artifactId>dagger-compiler</artifactId>
-            <version>${dagger.version}</version>
-            <optional>true</optional>
-        </dependency>
-
-        <!-- Test Dependencies -->
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-    </dependencies>
-
-
-    <!-- ====================================================================== -->
-    <!-- B U I L D                                                              -->
-    <!-- ====================================================================== -->
-
-    <build>
-        <resources>
-            <resource>
-                <directory>src/main/java</directory>
-                <filtering>true</filtering>
-            </resource>
-
-            <!-- Add Dagger generated sources to classpath for Intellij (this does add to mvn build, ) -->
-            <!-- so build-helper-maven-plugin is used to provide generated sources to gwt compiler     -->
-            <resource>
-                <directory>target/generated-sources/annotations</directory>
-                <filtering>true</filtering>
-            </resource>
-        </resources>
-
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>${maven-compiler-plugin.version}</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <distributionManagement>
+        <snapshotRepository>
+            <id>ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 
     <!-- ====================================================================== -->
@@ -199,124 +71,61 @@
 
     <profiles>
         <profile>
-            <id>dev</id>
+            <id>ossrh</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
             </activation>
-
             <build>
+                <resources>
+                    <resource>
+                        <directory>src/main/java</directory>
+                    </resource>
+                </resources>
 
                 <plugins>
 
-                    <!-- Filter fonts and images (fonts do not work if they do not get filtered). -->
+                    <!-- Maven compiler -->
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-resources-plugin</artifactId>
-                        <version>${maven-resources-plugin.version}</version>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <version>${maven-compiler-plugin.version}</version>
                         <configuration>
-                            <nonFilteredFileExtensions>
-                                <nonFilteredFileExtension>woff</nonFilteredFileExtension>
-                                <nonFilteredFileExtension>woff2</nonFilteredFileExtension>
-                                <nonFilteredFileExtension>ttf</nonFilteredFileExtension>
-                                <nonFilteredFileExtension>eot</nonFilteredFileExtension>
-                                <nonFilteredFileExtension>jpg</nonFilteredFileExtension>
-                                <nonFilteredFileExtension>jpeg</nonFilteredFileExtension>
-                                <nonFilteredFileExtension>gif</nonFilteredFileExtension>
-                                <nonFilteredFileExtension>png</nonFilteredFileExtension>
-                                <nonFilteredFileExtension>svg</nonFilteredFileExtension>
-                                <nonFilteredFileExtension>ico</nonFilteredFileExtension>
-                            </nonFilteredFileExtensions>
+                            <source>${java.version}</source>
+                            <target>${java.version}</target>
                         </configuration>
                     </plugin>
 
-                    <!-- Add Dagger generated sources to the source path. GWT compile needs this. -->
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>build-helper-maven-plugin</artifactId>
-                        <version>${build-helper-maven-plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <id>add-source</id>
-                                <phase>generate-sources</phase>
-                                <goals>
-                                    <goal>add-source</goal>
-                                </goals>
-                                <configuration>
-                                    <sources>
-                                        <source>target/generated-sources/annotations</source>
-                                    </sources>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-
-                    <!-- GWT Compile -->
-                    <plugin>
-                        <groupId>org.codehaus.mojo</groupId>
-                        <artifactId>gwt-maven-plugin</artifactId>
-                        <version>${gwt-maven-plugin.version}</version>
-                        <executions>
-                            <execution>
-                                <id>gwt-compile</id>
-                                <phase>compile</phase>
-                                <configuration>
-                                    <extraJvmArgs>-Xmx1024M -Xss1024k</extraJvmArgs>
-                                    <localWorkers>3</localWorkers>
-                                    <persistentunitcache>false</persistentunitcache>
-                                    <style>pretty</style>
-                                    <compileReport>true</compileReport>
-                                </configuration>
-                                <goals>
-                                    <goal>compile</goal>
-                                </goals>
-                            </execution>
-                        </executions>
-                    </plugin>
-
-                    <!-- Javadoc and Source Attachments -->
-<plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-source-plugin</artifactId>
-      <version>2.2.1</version>
-      <executions>
-        <execution>
-          <id>attach-sources</id>
-          <goals>
-            <goal>jar-no-fork</goal>
-          </goals>
-        </execution>
-      </executions>
-    </plugin>
-    <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-javadoc-plugin</artifactId>
-      <version>2.9.1</version>
-      <executions>
-        <execution>
-          <id>attach-javadocs</id>
-          <goals>
-            <goal>jar</goal>
-          </goals>
-        </execution>
-      </executions>
-    </plugin>
-
-
                     <!-- Sign GPG -->
                     <plugin>
-      <groupId>org.apache.maven.plugins</groupId>
-      <artifactId>maven-gpg-plugin</artifactId>
-      <version>1.5</version>
-      <executions>
-        <execution>
-          <id>sign-artifacts</id>
-          <phase>verify</phase>
-          <goals>
-            <goal>sign</goal>
-          </goals>
-        </execution>
-      </executions>
-    </plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <version>${maven-gpg-plugin.version}</version>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                                <configuration>
+                                    <passphraseServerId>clickhandler.io.gpg.passphrase</passphraseServerId>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <!-- Deploy to maven central -->
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <version>${nexus-staging-maven-plugin.version}</version>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
                 </plugins>
             </build>
         </profile>
